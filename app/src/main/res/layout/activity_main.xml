@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/imgToPdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/image_to_pdf"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_marginTop="?actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/txtToPdf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/text_to_pdf"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@id/imgToPdf"
+        app:layout_constraintStart_toStartOf="@id/imgToPdf"
+       app:layout_constraintTop_toBottomOf="@id/imgToPdf"
+        />
+
+    <Button
+        android:id="@+id/txtFileToPdf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_file_to_pdf"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@id/imgToPdf"
+        app:layout_constraintStart_toStartOf="@id/imgToPdf"
+        app:layout_constraintTop_toBottomOf="@id/txtToPdf"
+        />
+
+    <Button
+        android:id="@+id/splitPdf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/split_pdf_file"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@id/imgToPdf"
+        app:layout_constraintStart_toStartOf="@id/imgToPdf"
+        app:layout_constraintTop_toBottomOf="@id/txtFileToPdf"/>
+
+    <Button
+        android:id="@+id/mergePdf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/merge_pdf"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@id/imgToPdf"
+        app:layout_constraintStart_toStartOf="@id/imgToPdf"
+        app:layout_constraintTop_toBottomOf="@id/splitPdf"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

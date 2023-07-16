@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Pdf Tools</string>
+    <string name="image_to_pdf">Image To Pdf</string>
+    <string name="split_pdf_file">Split Pdf File</string>
+    <string name="merge_pdf">Merge pdf</string>
+    <string name="text_to_pdf">Text to Pdf</string>
+    <string name="excel_to_pdf">Excel to Pdf</string>
+    <string name="txt_file_to_pdf">Text file to Pdf</string>
+</resources>
