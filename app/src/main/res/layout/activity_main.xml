@@ -68,4 +68,16 @@
         app:layout_constraintStart_toStartOf="@id/imgToPdf"
         app:layout_constraintTop_toBottomOf="@id/splitPdf"/>
 
+    <Button
+        android:id="@+id/pdfViewer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/pdf_viewer"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@id/imgToPdf"
+        app:layout_constraintStart_toStartOf="@id/imgToPdf"
+        app:layout_constraintTop_toBottomOf="@id/mergePdf"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

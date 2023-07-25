@@ -2,6 +2,7 @@ package com.example.self_test
 
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -16,6 +17,7 @@ import android.text.Layout
 import android.text.StaticLayout
 import android.text.TextPaint
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -30,12 +32,13 @@ import com.example.self_test.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
+import java.io.*
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var selectedFileUri: Uri
+    private val TAG="MainActivity"
+    private lateinit var selectedTxtFileUri: Uri
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val selectedImages = mutableListOf<Uri>()
     private val selectedPdfUris = mutableListOf<Uri>()
@@ -76,6 +79,11 @@ class MainActivity : AppCompatActivity() {
         convertImagesToPdf()
     }
 
+    private val filePickerLauncher = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
+        uri?.let { selectedUri ->
+            selectedFileUri = uri
+         }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +94,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
+
+        binding.pdfViewer.setOnClickListener {
+            startActivity(Intent(this@MainActivity,PdfViewer::class.java))
+        }
         binding.imgToPdf.setOnClickListener {
             checkPermissionAndPickImages()
         }
@@ -99,6 +111,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.txtToPdf.setOnClickListener {
             showConvertDialog()
+        }
+
+        binding.txtFileToPdf.setOnClickListener {
+         //   openTxtFilePicker.launch("application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain")
+            val mimeTypes = arrayOf("application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+            filePickerLauncher.launch(mimeTypes)
         }
     }
 
@@ -307,8 +325,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun createMergedPdfFile(): File? {
         val outputDir = File("${getExternalFilesDir(null)?.absolutePath}/merged_files/")
         if (!outputDir.exists()) {
@@ -430,6 +446,10 @@ class MainActivity : AppCompatActivity() {
         fileOutputStream.close()
         Toast.makeText(this@MainActivity, "Pdf File Created Successfully", Toast.LENGTH_SHORT)
             .show()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
 }

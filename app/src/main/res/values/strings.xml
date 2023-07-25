@@ -6,4 +6,5 @@
     <string name="text_to_pdf">Text to Pdf</string>
     <string name="excel_to_pdf">Excel to Pdf</string>
     <string name="txt_file_to_pdf">Text file to Pdf</string>
+    <string name="pdf_viewer">Pdf Viewer</string>
 </resources>
